@@ -1,0 +1,55 @@
+{
+  "androidManifest": {
+    "permissions": [
+      "android.permission.POST_NOTIFICATIONS",
+      "android.permission.READ_EXTERNAL_STORAGE",
+      "android.permission.READ_MEDIA_AUDIO",
+      "android.permission.FOREGROUND_SERVICE",
+      "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+      "android.permission.WAKE_LOCK"
+    ],
+    "features": [
+      {
+        "name": "android.hardware.audio.output",
+        "required": false
+      }
+    ],
+    "services": [
+      {
+        "name": "MusicPlaybackService",
+        "type": "foreground",
+        "description": "Serviço de reprodução de música em segundo plano"
+      }
+    ]
+  },
+  "nativeFeatures": {
+    "notifications": {
+      "enabled": true,
+      "channel": "music-player",
+      "importance": "max",
+      "vibration": true,
+      "sound": true
+    },
+    "mediaScanner": {
+      "enabled": true,
+      "mediaTypes": ["audio/mpeg", "audio/wav", "audio/ogg", "audio/flac"],
+      "autoScan": true
+    },
+    "backgroundPlayback": {
+      "enabled": true,
+      "keepScreenAwake": false,
+      "duckAudio": true
+    },
+    "storage": {
+      "readExternalStorage": true,
+      "readMediaAudio": true,
+      "scanOnStartup": true
+    }
+  },
+  "buildConfig": {
+    "minSdkVersion": 24,
+    "targetSdkVersion": 34,
+    "compileSdkVersion": 34,
+    "buildArchitectures": ["armeabi-v7a", "arm64-v8a"]
+  }
+}
